@@ -1,0 +1,11 @@
+framework module WaboFacebook {
+  umbrella header "WaboFacebook.h"
+
+  export *
+  module * { export * }
+}
+
+module WaboFacebook.Swift {
+  header "WaboFacebook-Swift.h"
+  requires objc
+}

@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "WaboFacebookIOSSDK"
-  spec.version="0.0.2"
+  spec.version="0.0.3"
   spec.summary = "Wabo SDK Facebook sdk"
   spec.description= <<-DESC
   Wabo SDK for Facebook
@@ -14,5 +14,6 @@ Pod::Spec.new do |spec|
   spec.vendored_frameworks = 'WaboFacebookIOSSDK/*.{framework}'
   spec.public_header_files = 'WaboFacebookIOSSDK/*.{framework}/Headers/*.h'
   spec.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64' }
+  spec.swift_version = '5.0'
   spec.dependency 'FBSDKLoginKit', '13.0.0'
 end

@@ -230,6 +230,7 @@ using UInt = size_t;
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import FBSDKShareKit;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -302,6 +303,29 @@ SWIFT_CLASS("_TtC12WaboFacebook12WaboFacebook")
 - (BOOL)application:(UIApplication * _Nonnull)application openURL:(NSURL * _Nonnull)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> * _Nonnull)options SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)application:(UIApplication * _Nonnull)application openURL:(NSURL * _Nonnull)url sourceApplication:(NSString * _Nullable)sourceApplication annotation:(id _Nonnull)annotation SWIFT_WARN_UNUSED_RESULT;
 - (void)scene:(UIScene * _Nonnull)scene openURLContexts:(NSSet<UIOpenURLContext *> * _Nonnull)URLContexts SWIFT_AVAILABILITY(ios,introduced=13.0);
+@end
+
+@class UIImage;
+@protocol FBSDKSharing;
+
+@interface WaboFacebook (SWIFT_EXTENSION(WaboFacebook)) <FBSDKSharingDelegate>
+- (void)shareLink:(NSString * _Nonnull)url :(void (^ _Nonnull)(id _Nullable))delegate;
+- (void)sharePhoto:(UIImage * _Nonnull)image :(void (^ _Nonnull)(id _Nullable))delegate;
+- (void)sharer:(id <FBSDKSharing> _Nonnull)sharer didCompleteWithResults:(NSDictionary<NSString *, id> * _Nonnull)results;
+- (void)sharer:(id <FBSDKSharing> _Nonnull)sharer didFailWithError:(NSError * _Nonnull)error;
+- (void)sharerDidCancel:(id <FBSDKSharing> _Nonnull)sharer;
+@end
+
+
+@interface WaboFacebook (SWIFT_EXTENSION(WaboFacebook)) <WaboThirdUploadLoggerProtocol>
+- (void)registerEvent;
+- (void)login;
+- (void)level:(NSInteger)level;
+- (void)addToCart:(double)price :(NSString * _Nonnull)currency :(NSString * _Nonnull)contentId;
+- (void)initCheckout:(double)price :(NSString * _Nonnull)currency :(NSString * _Nonnull)contentId SWIFT_METHOD_FAMILY(none);
+- (void)purchase:(double)price :(NSString * _Nonnull)currency :(NSString * _Nonnull)contentId;
+- (void)subscription:(double)price :(NSString * _Nonnull)currency :(NSString * _Nonnull)orderId;
+- (void)adShow:(NSString * _Nonnull)adType :(NSString * _Nonnull)mediationPlatform :(NSString * _Nonnull)networkName :(NSString * _Nonnull)displayName :(NSString * _Nonnull)adUnitId :(double)revenue;
 @end
 
 #endif

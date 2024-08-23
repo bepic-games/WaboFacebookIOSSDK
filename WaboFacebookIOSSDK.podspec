@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "WaboFacebookIOSSDK"
-  spec.version="0.1.38"
+  spec.version="0.1.40"
   spec.summary = "Wabo SDK Facebook sdk"
   spec.description= <<-DESC
   Wabo SDK for Facebook
